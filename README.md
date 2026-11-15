@@ -20,7 +20,7 @@ Live at **https://rishabhjindal0807.github.io**
 | `src/styles.css` | Tailwind source: design tokens, theme colours, motion components |
 | `assets/site.css` | Compiled, minified stylesheet that the page loads (commit it after building) |
 | `assets/site.js` | All interactions and animation |
-| `resume.pdf` | The download linked from the page |
+| `Rishabh-Jindal-Lead-Software-Engineer.pdf` | The download linked from the page |
 
 ## Editing
 
@@ -32,4 +32,4 @@ npm run build   # one-off minified build before committing
 
 To show your email on the page, set `CONTACT_EMAIL` at the top of `assets/site.js`. While it's empty, LinkedIn is the main contact button.
 
-Replace `resume.pdf` whenever the resume changes (keep the same file name).
+Replace `Rishabh-Jindal-Lead-Software-Engineer.pdf` whenever the resume changes (keep the same file name).

@@ -355,7 +355,7 @@ const CONTACT_EMAIL = '';
     { label: 'Skills', hint: 'Section', run: go('#skills') },
     { label: 'Contact', hint: 'Section', run: go('#contact') },
     CONTACT_EMAIL && { label: 'Copy email address', hint: 'Action', run: copyEmail },
-    { label: 'Download resume (PDF)', hint: 'Action', run: () => { const a = document.createElement('a'); a.href = 'resume.pdf'; a.download = ''; document.body.appendChild(a); a.click(); a.remove(); } },
+    { label: 'Download resume (PDF)', hint: 'Action', run: () => { const a = document.createElement('a'); a.href = 'Rishabh-Jindal-Lead-Software-Engineer.pdf'; a.download = 'Rishabh-Jindal-Lead-Software-Engineer.pdf'; document.body.appendChild(a); a.click(); a.remove(); } },
     { label: 'Open LinkedIn', hint: 'Link', run: () => window.open('https://www.linkedin.com/in/rishabh-jindal-34132362/', '_blank', 'noopener') },
     { label: 'Switch colour theme', hint: 'Action', run: () => toggleTheme() },
     { label: 'Replay the answer', hint: 'Action', run: () => { go('#top')(); setTimeout(stream, 600); } }
