@@ -131,59 +131,83 @@ const CONTACT_EMAIL = '';
     el.setAttribute('tabindex', '-1'); setTimeout(() => el.focus({ preventScroll: true }), 700);
   });
 
-  /* ---------- Pointer-reactive background ---------- */
+  /* ---------- Night-sky background: stars drawn toward the pointer ---------- */
   const field = $('#field'), ctx = field.getContext('2d'), aur = $$('.aurora i'), par = $$('.parallax');
-  const P = { x: innerWidth * .7, y: innerHeight * .35, tx: innerWidth * .7, ty: innerHeight * .35, active: false };
-  const GAP = 28, R = 170;
-  let W = 0, H = 0, dpr = 1, pts = [], colors = {}, running = false, lastMove = 0;
+  const P = { x: -999, y: -999, tx: -999, ty: -999, ax: innerWidth * .7, ay: innerHeight * .35, active: false };
+  const R = 210;                         // pull radius in px
+  let W = 0, H = 0, dpr = 1, stars = [], colors = {}, t0 = performance.now();
+  const rgb = h => { h = h.trim().replace('#', ''); if (h.length === 3) h = [...h].map(c => c + c).join(''); return [0, 2, 4].map(i => parseInt(h.substr(i, 2), 16)); };
   function readColors() {
     const cs = getComputedStyle(doc);
-    colors = { dot: cs.getPropertyValue('--dot').trim(), accent: cs.getPropertyValue('--accent').trim() };
-    const a = colors.accent.replace('#', ''); colors.rgb = [0, 2, 4].map(i => parseInt(a.substr(i, 2), 16));
+    const dark = doc.dataset.theme === 'dark';
+    colors = { star: rgb(cs.getPropertyValue(dark ? '--text' : '--muted')), acc: rgb(cs.getPropertyValue('--accent')), dark };
   }
   function size() {
     dpr = Math.min(2, devicePixelRatio || 1); W = innerWidth; H = innerHeight;
     field.width = W * dpr; field.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    pts = [];
-    for (let y = GAP / 2; y < H + GAP; y += GAP) for (let x = GAP / 2; x < W + GAP; x += GAP) pts.push({ x, y, ox: 0, oy: 0 });
+    const n = Math.round(Math.min(950, W * H / (colors.dark ? 2100 : 2900)));
+    stars = [];
+    for (let i = 0; i < n; i++) {
+      const z = Math.random();             // 0 = far away, 1 = close
+      stars.push({ x: Math.random() * W, y: Math.random() * H, z, r: .35 + Math.pow(z, 2.4) * 1.55,
+        a: .22 + Math.random() * .6, ph: Math.random() * 6.283, sp: .5 + Math.random() * 1.8, ox: 0, oy: 0 });
+    }
     draw();
   }
-  function draw() {
+  function draw(now = performance.now()) {
+    const live = motion(), t = (now - t0) / 1000, sy = live ? scrollY : 0;
+    const [sr, sg, sb] = colors.star, [ar, ag, ab] = colors.acc, k = colors.dark ? 1 : .42;
     ctx.clearRect(0, 0, W, H);
-    const [r, g, b] = colors.rgb || [123, 147, 255];
-    ctx.fillStyle = colors.dot;
     const near = [];
-    for (const d of pts) {
-      const dx = d.x - P.x, dy = d.y - P.y, dist = Math.hypot(dx, dy);
-      let tx = 0, ty = 0;
-      if (P.active && dist < R && motion()) { const f = (1 - dist / R); const push = f * f * 14; tx = dx / (dist || 1) * push; ty = dy / (dist || 1) * push; near.push([d, f]); }
-      d.ox += (tx - d.ox) * .18; d.oy += (ty - d.oy) * .18;
-      if (Math.abs(d.ox) < .05 && Math.abs(d.oy) < .05) { d.ox = 0; d.oy = 0; }
-      ctx.fillRect(d.x + d.ox - .7, d.y + d.oy - .7, 1.4, 1.4);
+    for (const s of stars) {
+      const bx = live ? ((s.x + t * (1.5 + s.z * 5)) % (W + 20) + W + 20) % (W + 20) - 10 : s.x;
+      const by = ((s.y - sy * (.03 + s.z * .16)) % H + H) % H;
+      let tx = 0, ty = 0, f = 0;
+      if (P.active && live) {
+        const dx = P.x - bx, dy = P.y - by, d = Math.hypot(dx, dy);
+        if (d < R) { f = 1 - d / R; const pull = f * f * .45; tx = dx * pull; ty = dy * pull; }
+      }
+      s.ox += (tx - s.ox) * .085; s.oy += (ty - s.oy) * .085;
+      const x = bx + s.ox, y = by + s.oy;
+      const tw = live ? .62 + .38 * Math.sin(t * s.sp + s.ph) : 1;
+      const al = Math.min(1, s.a * tw + f * .7) * k, r = s.r * (1 + f * 1.1);
+      ctx.fillStyle = f > .02 ? `rgba(${ar},${ag},${ab},${al.toFixed(3)})` : `rgba(${sr},${sg},${sb},${al.toFixed(3)})`;
+      if (r < .9) ctx.fillRect(x - r, y - r, r * 2, r * 2); else { ctx.beginPath(); ctx.arc(x, y, r, 0, 6.283); ctx.fill(); }
+      if (s.z > .94 && colors.dark && f < .02) { ctx.fillStyle = `rgba(${sr},${sg},${sb},${(al * .1).toFixed(3)})`; ctx.beginPath(); ctx.arc(x, y, r * 3.2, 0, 6.283); ctx.fill(); }
+      if (f > .3) near.push([x, y, f]);
     }
-    for (const [d, f] of near) {
-      ctx.fillStyle = `rgba(${r},${g},${b},${(f * .85).toFixed(3)})`;
-      ctx.beginPath(); ctx.arc(d.x + d.ox, d.y + d.oy, .8 + f * 1.6, 0, 6.283); ctx.fill();
+    if (near.length > 1) {                 // constellation: link each gathered star to its nearest neighbours
+      near.sort((m, n) => n[2] - m[2]);
+      const g = near.slice(0, 16), seen = new Set(); ctx.lineWidth = .8;
+      g.forEach((p, i) => {
+        g.map((q, j) => [j, Math.hypot(p[0] - q[0], p[1] - q[1])]).filter(([j]) => j !== i)
+          .sort((m, n) => m[1] - n[1]).slice(0, 2).forEach(([j, d]) => {
+            const key = i < j ? i + '-' + j : j + '-' + i; if (seen.has(key) || d > 120) return; seen.add(key);
+            const q = g[j], a = Math.min(p[2], q[2]) - .3;
+            ctx.strokeStyle = `rgba(${ar},${ag},${ab},${(a * (colors.dark ? .9 : .7)).toFixed(3)})`;
+            ctx.beginPath(); ctx.moveTo(p[0], p[1]); ctx.lineTo(q[0], q[1]); ctx.stroke();
+          });
+      });
     }
   }
-  function loop(t) {
-    P.x += (P.tx - P.x) * .14; P.y += (P.ty - P.y) * .14;
-    draw();
-    const nx = (P.x / W - .5), ny = (P.y / H - .5);
+  function loop(now) {
+    P.x += (P.tx - P.x) * .25; P.y += (P.ty - P.y) * .25;
+    if (P.active) { P.ax += (P.tx - P.ax) * .04; P.ay += (P.ty - P.ay) * .04; }
+    const nx = P.ax / W - .5, ny = P.ay / H - .5;
     if (aur[0]) aur[0].style.transform = `translate3d(${W * .5 + nx * W * .5}px, ${H * .4 + ny * H * .45}px, 0)`;
     if (aur[1]) aur[1].style.transform = `translate3d(${W * .5 - nx * W * .35}px, ${H * .65 - ny * H * .3}px, 0)`;
-    par.forEach(el => { const k = +el.dataset.depth; el.style.transform = `translate3d(${nx * k}px, ${ny * k}px, 0)`; });
-    const settled = Math.abs(P.tx - P.x) < .3 && Math.abs(P.ty - P.y) < .3 && t - lastMove > 1200;
-    if (!settled) requestAnimationFrame(loop); else running = false;
+    par.forEach(el => { const d = +el.dataset.depth; el.style.transform = `translate3d(${nx * d}px, ${ny * d}px, 0)`; });
+    draw(now);
+    requestAnimationFrame(loop);
   }
-  function kick() { if (!running) { running = true; requestAnimationFrame(loop); } }
   readColors(); size();
-  addEventListener('resize', () => { size(); kick(); });
-  if (fine && motion()) {
-    addEventListener('pointermove', e => { P.tx = e.clientX; P.ty = e.clientY; P.active = true; lastMove = performance.now(); kick(); }, { passive: true });
-    document.addEventListener('pointerleave', () => { P.active = false; lastMove = performance.now(); kick(); });
+  addEventListener('resize', size);
+  if (fine) {
+    addEventListener('pointermove', e => { if (!P.active) { P.x = e.clientX; P.y = e.clientY; } P.tx = e.clientX; P.ty = e.clientY; P.active = true; }, { passive: true });
+    document.documentElement.addEventListener('pointerleave', () => { P.active = false; });
   }
-  kick();
+  if (motion()) requestAnimationFrame(loop);
+  else { addEventListener('scroll', () => draw(), { passive: true }); }
 
   /* ---------- Card spotlight edges ---------- */
   if (fine) $$('.spot').forEach(el => el.addEventListener('pointermove', e => {
@@ -332,7 +356,7 @@ const CONTACT_EMAIL = '';
   function applyTheme(t) {
     doc.dataset.theme = t; try { localStorage.setItem('rj-theme', t); } catch (e) {}
     $('meta[name="theme-color"]').setAttribute('content', t === 'dark' ? '#0D1526' : '#EEF1F0');
-    readColors(); draw();
+    readColors(); size();
   }
   function toggleTheme(e) {
     const next = doc.dataset.theme === 'dark' ? 'light' : 'dark';
