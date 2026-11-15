@@ -33,3 +33,5 @@ npm run build   # one-off minified build before committing
 To show your email on the page, set `CONTACT_EMAIL` at the top of `assets/site.js`. While it's empty, LinkedIn is the main contact button.
 
 Replace `Rishabh-Jindal-Lead-Software-Engineer.pdf` whenever the resume changes (keep the same file name).
+
+After changing `assets/site.css` or `assets/site.js`, bump the `?v=` number on their links in `index.html` so browsers fetch the new files instead of a cached copy.
