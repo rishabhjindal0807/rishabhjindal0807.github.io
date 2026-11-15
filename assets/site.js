@@ -97,7 +97,7 @@ const CONTACT_EMAIL = '';
     1: { head: 'Team and platform', quote: 'Lead a team of 6 engineers that owns OptimaAI end to end, an AI-powered credit-underwriting platform.', from: 'Lead Software Engineer, Accumn, 2024 to now', target: 'ev-1' },
     2: { head: 'Lenders in production', quote: 'Live with 10 lenders across India and MENA, running in separate India and UAE environments.', from: 'Lead Software Engineer, Accumn, 2024 to now', target: 'ev-7' },
     3: { head: 'Years of experience', quote: 'First role: System Engineer at Tata Consultancy Services from September 2017, followed by Publicis Sapient, Yubi and Accumn.', from: 'System Engineer, TCS, 2017 to 2019', target: 'ev-tcs' },
-    4: { head: 'Full-stack ownership', quote: 'Async PostgreSQL, SQLAlchemy 2.0, Redis and Qdrant; React 18 + TypeScript modules; Kubernetes, Helm and ArgoCD at 99.9%+ uptime.', from: 'Lead Software Engineer, Accumn, 2024 to now', target: 'ev-6' },
+    4: { head: 'Full-stack ownership', quote: 'Async PostgreSQL, SQLAlchemy 2.0, Redis and Qdrant; React 18 + TypeScript modules; Kubernetes, Helm and Argo CD at 99.9%+ uptime.', from: 'Lead Software Engineer, Accumn, 2024 to now', target: 'ev-6' },
     5: { head: 'Traceable AI answers', quote: 'MCP tools return cited data, LLM output is limited to citation markers, and the UI links each marker to a source panel.', from: 'Lead Software Engineer, Accumn, 2024 to now', target: 'ev-4' }
   };
   const pop = $('#pop'); let openCite = null;
@@ -234,9 +234,9 @@ const CONTACT_EMAIL = '';
     api: { k: 'The front door', h: 'FastAPI services', p: 'Async Python 3.13 services with OAuth/JWT and hierarchical role-based access across lender, division and branch scopes, for six personas from Relationship Manager to Chief Risk Officer.', t: ['Python 3.13', 'FastAPI', 'OAuth/JWT', 'RBAC'] },
     agents: { k: 'The reasoning layer', h: 'Claude agents', p: 'Conversations route to company and retail agents through mcp-agent. A dedicated editing agent drafts and refines Credit Assessment Memos with per-turn versioning, audit history and rollback.', t: ['Claude SDK', 'mcp-agent', 'CAM generation'] },
     mcp: { k: 'Why MCP', h: '5 MCP servers, 30+ tools', p: 'Calculator, company, retail, legacy and MENA servers give every agent one standard tool interface. New tools or regions plug in without touching agent code.', t: ['Model Context Protocol', 'FastAPI', 'Monorepo'] },
-    data: { k: 'State and search', h: 'Data layer', p: 'PostgreSQL through async SQLAlchemy 2.0 and asyncpg, Redis for caching, and Qdrant for vector search behind retrieval.', t: ['PostgreSQL', 'SQLAlchemy 2.0', 'Redis', 'Qdrant'] },
+    data: { k: 'State and search', h: 'Data layer', p: 'PostgreSQL through async SQLAlchemy 2.0 and asyncpg, alongside Redis and Qdrant for vector search.', t: ['PostgreSQL', 'SQLAlchemy 2.0', 'Redis', 'Qdrant'] },
     temporal: { k: 'Why Temporal', h: 'Durable workflows', p: 'Long-running taskbook execution, RFP orchestration and operations automation. Durable state and automatic retries mean 100+ concurrent jobs survive failures without anyone stepping in.', t: ['Temporal', '100+ concurrent', 'Automatic retries'] },
-    infra: { k: 'How it ships', h: 'Weekly releases, 99.9%+ uptime', p: 'Docker multi-stage builds, Kubernetes with Helm, ArgoCD GitOps and Jenkins pipelines, with separate India and UAE environments.', t: ['Kubernetes', 'Helm', 'ArgoCD', 'Jenkins'] }
+    infra: { k: 'How it ships', h: 'Weekly releases, 99.9%+ uptime', p: 'Docker multi-stage builds, Kubernetes with Helm, Argo CD GitOps and Jenkins pipelines, with separate India and UAE environments.', t: ['Kubernetes', 'Helm', 'Argo CD', 'Jenkins'] }
   };
   const detail = $('#detail');
   function showNode(key) {
@@ -357,7 +357,7 @@ const CONTACT_EMAIL = '';
     CONTACT_EMAIL && { label: 'Copy email address', hint: 'Action', run: copyEmail },
     { label: 'Download resume (PDF)', hint: 'Action', run: () => { const a = document.createElement('a'); a.href = 'Rishabh-Jindal-Lead-Software-Engineer.pdf'; a.download = 'Rishabh-Jindal-Lead-Software-Engineer.pdf'; document.body.appendChild(a); a.click(); a.remove(); } },
     { label: 'Open LinkedIn', hint: 'Link', run: () => window.open('https://www.linkedin.com/in/rishabh-jindal-34132362/', '_blank', 'noopener') },
-    { label: 'Switch colour theme', hint: 'Action', run: () => toggleTheme() },
+    { label: 'Switch to light or dark mode', hint: 'Action', run: () => toggleTheme() },
     { label: 'Replay the answer', hint: 'Action', run: () => { go('#top')(); setTimeout(stream, 600); } }
   ].filter(Boolean);
   let palItems = [], palSel = 0;
