@@ -1,0 +1,12 @@
+{
+  "name": "rishabhjindal0807.github.io",
+  "private": true,
+  "description": "Personal site built from my resume. Static HTML + Tailwind CSS v4, hosted on GitHub Pages.",
+  "scripts": {
+    "build": "tailwindcss -i src/styles.css -o assets/site.css --minify",
+    "dev": "tailwindcss -i src/styles.css -o assets/site.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.5"
+  }
+}
