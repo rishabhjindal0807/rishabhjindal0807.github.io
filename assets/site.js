@@ -354,7 +354,7 @@ const CONTACT_EMAIL = '';
 
   /* ---------- Theme ---------- */
   function applyTheme(t) {
-    doc.dataset.theme = t; try { localStorage.setItem('rj-theme', t); } catch (e) {}
+    doc.dataset.theme = t;
     $('meta[name="theme-color"]').setAttribute('content', t === 'dark' ? '#0D1526' : '#EEF1F0');
     readColors(); size();
   }

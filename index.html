@@ -16,15 +16,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
 <script>
   (function () {
-    var d = document.documentElement, t = null;
-    try { t = localStorage.getItem('rj-theme'); } catch (e) {}
-    if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    d.dataset.theme = t;
+    var d = document.documentElement;
+    d.dataset.theme = 'dark'; // every visit opens in dark mode; the toggle switches for the current visit only
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('motion');
   })();
 </script>
-<link rel="stylesheet" href="assets/site.css?v=8">
-<script src="assets/site.js?v=8" defer></script>
+<link rel="stylesheet" href="assets/site.css?v=9">
+<script src="assets/site.js?v=9" defer></script>
 </head>
 <body>
 <a href="#main" class="absolute -left-[999px] top-0 z-[100] rounded-lg bg-accent px-4 py-2 text-on-accent focus:left-4 focus:top-4">Skip to content</a>

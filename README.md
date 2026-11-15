@@ -6,7 +6,7 @@ Live at **https://rishabhjindal0807.github.io**
 
 ## What's in it
 
-- Light and dark mode (follows the system setting, remembers the visitor's choice; `dark:` variant is wired to `data-theme`)
+- Opens in dark mode on every visit; the toggle switches to light for that visit (`dark:` variant is wired to `data-theme`)
 - Hero answer that streams in like an AI response, with citation markers that open the evidence
 - Pointer-reactive dot field, drifting light and card spotlights (switched off for touch and reduced-motion users)
 - Interactive, animated OptimaAI architecture diagram
