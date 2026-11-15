@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rishabh Jindal, Lead Software Engineer</title>
+<meta name="description" content="Rishabh Jindal leads the team building OptimaAI, an agentic AI credit-underwriting platform live with 10 lenders across India and MENA. 9+ years across Python, React and Kubernetes.">
+<meta property="og:title" content="Rishabh Jindal, Lead Software Engineer">
+<meta property="og:description" content="Agentic AI platforms for credit teams. Python, FastAPI, React, Temporal, MCP, Kubernetes.">
+<meta property="og:type" content="profile">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232747B8'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='16' font-weight='700' fill='%23fff' text-anchor='middle'%3ERJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #E8EDEA;
+    --paper-2: #F3F6F4;
+    --ink: #172033;
+    --muted: #4F5A6B;
+    --rule: #C5CEC8;
+    --cobalt: #2747B8;
+    --cobalt-ink: #1B3390;
+    --mark: #F5D76E;
+
+    --sans: "Schibsted Grotesk", system-ui, sans-serif;
+    --serif: "Source Serif 4", Georgia, serif;
+
+    --step--1: 0.875rem;
+    --step-0: 1.0625rem;
+    --step-1: 1.3125rem;
+    --step-2: 1.625rem;
+    --step-3: 2.25rem;
+    --step-5: clamp(3rem, 7.5vw, 5.75rem);
+
+    --gutter: clamp(1.25rem, 4vw, 3rem);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: var(--step-0);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: var(--cobalt); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+  a:hover { color: var(--cobalt-ink); text-decoration-thickness: 2px; }
+  :focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; border-radius: 3px; }
+
+  .skip { position: absolute; left: -999px; top: 0; }
+  .skip:focus { left: 1rem; top: 1rem; background: var(--ink); color: #fff; padding: .5rem 1rem; z-index: 50; }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s;
+  }
+  .masthead.is-scrolled { border-bottom-color: var(--rule); }
+  .masthead-inner {
+    max-width: 78rem; margin: 0 auto;
+    padding: .9rem var(--gutter);
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    font-family: var(--sans); font-size: var(--step--1);
+  }
+  .wordmark { font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; font-size: 1rem; }
+  .masthead nav { display: flex; gap: clamp(.9rem, 2.5vw, 1.75rem); align-items: center; }
+  .masthead nav a { color: var(--ink); text-decoration: none; font-weight: 500; }
+  .masthead nav a:hover { color: var(--cobalt); }
+  .masthead nav .pdf {
+    border: 1.5px solid var(--ink); padding: .35rem .8rem; border-radius: 999px;
+  }
+  .masthead nav .pdf:hover { background: var(--ink); color: var(--paper); }
+
+  /* ---------- Layout ---------- */
+  .layout {
+    max-width: 78rem; margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 22rem;
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+  .content { min-width: 0; }
+
+  section { padding-block: clamp(3rem, 7vw, 5.5rem); }
+  section + section { border-top: 1px solid var(--rule); }
+
+  h1, h2, h3 { font-family: var(--sans); color: var(--ink); margin: 0; }
+  h2 { font-size: var(--step-3); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 2.25rem; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding-top: clamp(3.5rem, 10vw, 7.5rem); }
+  .hero h1 {
+    font-size: var(--step-5);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: .92;
+  }
+  .hero .role {
+    font-family: var(--sans);
+    font-size: var(--step-1);
+    font-weight: 500;
+    color: var(--muted);
+    margin: 1.25rem 0 0;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+  .lede {
+    font-size: clamp(1.3rem, 2.3vw, 1.7rem);
+    line-height: 1.55;
+    max-width: 34em;
+    margin: 2.5rem 0 0;
+  }
+  .hint {
+    font-family: var(--sans); font-size: var(--step--1); color: var(--muted);
+    margin: 1.5rem 0 0;
+    display: flex; align-items: center; gap: .55rem;
+  }
+  .hint .cite { pointer-events: none; }
+
+  /* The claim + citation marker: the page's one signature move */
+  .claim {
+    background-image: linear-gradient(var(--mark), var(--mark));
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position: 0 0;
+    transition: background-size .45s cubic-bezier(.2,.7,.2,1);
+    border-radius: 2px;
+    box-shadow: none;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+  .claim.is-active { background-size: 100% 100%; }
+
+  .cite {
+    font-family: var(--sans);
+    font-size: .62em;
+    font-weight: 700;
+    line-height: 1;
+    vertical-align: .55em;
+    display: inline-grid; place-items: center;
+    min-width: 1.7em; height: 1.7em;
+    padding: 0 .35em;
+    margin-left: .15em;
+    border: 0;
+    border-radius: .45em;
+    background: var(--cobalt);
+    color: #fff;
+    cursor: pointer;
+    transition: transform .15s, background-color .15s;
+  }
+  .cite:hover { background: var(--cobalt-ink); transform: translateY(-1px); }
+  .cite[aria-expanded="true"] { background: var(--ink); }
+  .hint .cite { font-size: .8rem; vertical-align: 0; margin: 0; }
+
+  /* ---------- Sources rail ---------- */
+  .sources {
+    position: sticky; top: 5.5rem;
+    align-self: start;
+    margin-top: clamp(3.5rem, 10vw, 7.5rem);
+    max-height: calc(100vh - 7rem);
+    overflow: auto;
+    font-family: var(--sans);
+  }
+  .sources-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: .75rem; border-bottom: 2px solid var(--ink);
+  }
+  .sources-head h2 { font-size: 1rem; margin: 0; letter-spacing: 0; }
+  .sources-head p { margin: 0; font-size: var(--step--1); color: var(--muted); }
+  .sheet-close { display: none; }
+
+  .source-list { list-style: none; margin: 0; padding: 0; }
+  .source { border-bottom: 1px solid var(--rule); }
+  .source-btn {
+    all: unset; box-sizing: border-box; cursor: pointer;
+    display: grid; grid-template-columns: 1.7rem 1fr; gap: .75rem; align-items: start;
+    width: 100%; padding: .9rem 0;
+    font-size: .95rem; font-weight: 500; line-height: 1.35;
+  }
+  .source-btn:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 2px; }
+  .source-num {
+    display: grid; place-items: center; width: 1.7rem; height: 1.7rem; border-radius: .45rem;
+    background: var(--paper-2); color: var(--cobalt); font-weight: 700; font-size: .8rem;
+    border: 1.5px solid var(--cobalt);
+  }
+  .source.is-active .source-num { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .source-body {
+    display: grid; grid-template-rows: 0fr;
+    transition: grid-template-rows .3s ease;
+  }
+  .source.is-active .source-body { grid-template-rows: 1fr; }
+  .source-body > div { overflow: hidden; }
+  .source-body blockquote {
+    margin: 0 0 .75rem 2.45rem;
+    padding: .85rem 1rem;
+    background: var(--paper-2);
+    border-left: 3px solid var(--mark);
+    font-family: var(--serif); font-size: .95rem; line-height: 1.55;
+  }
+  .source-body .from { display: block; margin-top: .5rem; font-family: var(--sans); font-size: .8rem; color: var(--muted); }
+  .jump {
+    margin: 0 0 1rem 2.45rem;
+    font-size: var(--step--1); font-weight: 600;
+    background: none; border: 0; padding: 0; color: var(--cobalt); cursor: pointer;
+    text-decoration: underline; text-underline-offset: .2em;
+  }
+
+  /* ---------- Experience timeline ---------- */
+  .roles { list-style: none; margin: 0; padding: 0; }
+  .role-item {
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    gap: 1.5rem;
+    padding-bottom: 3rem;
+    position: relative;
+  }
+  .role-item:last-child { padding-bottom: 0; }
+  .when {
+    font-family: var(--sans); font-size: var(--step--1); color: var(--muted);
+    padding-top: .3rem; line-height: 1.4;
+  }
+  .when strong { display: block; color: var(--ink); font-weight: 600; font-size: .95rem; }
+  .role-main { border-left: 2px solid var(--rule); padding-left: 1.5rem; position: relative; }
+  .role-main::before {
+    content: ""; position: absolute; left: -7px; top: .55rem;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--paper); border: 2px solid var(--ink);
+  }
+  .role-item.current .role-main::before { background: var(--cobalt); border-color: var(--cobalt); }
+  .role-main h3 { font-size: var(--step-1); font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; }
+  .org { font-family: var(--sans); color: var(--muted); font-size: .95rem; margin: .3rem 0 1rem; }
+  .role-main ul { margin: 0; padding-left: 1.1rem; max-width: 40em; }
+  .role-main li { margin-bottom: .6rem; padding-left: .2rem; }
+  .role-main li::marker { color: var(--cobalt); }
+  .role-main li.flagged { animation: flag 2.4s ease-out; border-radius: 3px; }
+  @keyframes flag {
+    0%, 35% { background: var(--mark); box-shadow: 0 0 0 .35rem var(--mark); }
+    100% { background: transparent; box-shadow: 0 0 0 .35rem transparent; }
+  }
+  .stack {
+    font-family: var(--sans); font-size: var(--step--1); color: var(--muted);
+    margin: 1rem 0 0; max-width: 40em;
+  }
+
+  /* ---------- Skills ---------- */
+  .skills {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 2.5rem; margin: 0;
+  }
+  .skills dt {
+    font-family: var(--sans); font-weight: 700; font-size: 1rem;
+    padding-bottom: .5rem; margin-bottom: .6rem; border-bottom: 2px solid var(--ink);
+  }
+  .skills dd { margin: 0; font-size: 1rem; line-height: 1.6; color: var(--ink); }
+
+  /* ---------- Education + Contact ---------- */
+  .edu { font-size: var(--step-1); line-height: 1.4; margin: 0; max-width: 32em; }
+  .edu span { display: block; font-family: var(--sans); font-size: var(--step--1); color: var(--muted); margin-top: .35rem; }
+
+  .contact h2 { font-size: clamp(2.25rem, 5.5vw, 4rem); letter-spacing: -0.04em; line-height: 1; max-width: 12em; margin-bottom: 1.5rem; }
+  .contact p { max-width: 34em; margin: 0 0 2rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .85rem; font-family: var(--sans); }
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .85rem 1.35rem; border-radius: 999px;
+    font-weight: 600; font-size: 1rem; text-decoration: none;
+    border: 2px solid var(--ink); color: var(--ink);
+    transition: background-color .15s, color .15s;
+  }
+  .btn:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+  .btn.primary { background: var(--cobalt); border-color: var(--cobalt); color: #fff; }
+  .btn.primary:hover { background: var(--cobalt-ink); border-color: var(--cobalt-ink); color: #fff; }
+
+  footer {
+    max-width: 78rem; margin: 0 auto; padding: 2rem var(--gutter) 3rem;
+    font-family: var(--sans); font-size: var(--step--1); color: var(--muted);
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1000px) {
+    .layout { grid-template-columns: 1fr; }
+    .sources {
+      position: fixed; left: 0; right: 0; bottom: 0; top: auto;
+      margin: 0; max-height: 70vh; z-index: 30;
+      background: var(--paper-2);
+      border-top: 2px solid var(--ink);
+      padding: 1rem var(--gutter) 1.25rem;
+      box-shadow: 0 -12px 40px rgba(23, 32, 51, .18);
+      transform: translateY(105%);
+      transition: transform .3s cubic-bezier(.2,.7,.2,1);
+      visibility: hidden;
+    }
+    .sources.is-open { transform: none; visibility: visible; }
+    .sources-head { border-bottom: 0; padding-bottom: .25rem; }
+    .sources-head p { display: none; }
+    .sheet-close {
+      display: inline-block; font-family: var(--sans); font-weight: 600; font-size: var(--step--1);
+      background: none; border: 1.5px solid var(--ink); border-radius: 999px; padding: .3rem .8rem; color: var(--ink); cursor: pointer;
+    }
+    .source { display: none; border: 0; }
+    .source.is-active { display: block; }
+    .source-btn { cursor: default; }
+  }
+  @media (max-width: 720px) {
+    .masthead nav a:not(.pdf) { display: none; }
+    .role-item { grid-template-columns: 1fr; gap: .5rem; }
+    .when strong { display: inline; margin-right: .4rem; }
+    .role-main { padding-left: 1.25rem; }
+    .skills { grid-template-columns: 1fr; }
+    .source-body blockquote, .jump { margin-left: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
+    html { scroll-behavior: auto; }
+    .role-main li.flagged { animation: none; background: var(--mark); }
+  }
+
+  @media print {
+    .masthead, .sources, .hint, .actions, footer { display: none !important; }
+    .layout { display: block; }
+    body { background: #fff; font-size: 11pt; }
+    .cite { display: none; }
+    section { padding-block: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead" id="masthead">
+  <div class="masthead-inner">
+    <a class="wordmark" href="#top">Rishabh Jindal</a>
+    <nav aria-label="Sections">
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <a class="pdf" href="resume.pdf" download>Resume PDF</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout" id="top">
+  <main class="content" id="main">
+
+    <section class="hero" aria-labelledby="name">
+      <h1 id="name">Rishabh<br>Jindal</h1>
+      <p class="role">Lead Software Engineer, building AI platforms for credit teams in Bangalore</p>
+
+      <p class="lede">
+        I lead <span class="claim" data-src="1">a team of six engineers building OptimaAI</span><button class="cite" data-src="1" aria-label="Source 1" aria-expanded="false" aria-controls="sources">1</button>,
+        an agentic credit-underwriting platform <span class="claim" data-src="2">live with ten lenders across India and MENA</span><button class="cite" data-src="2" aria-label="Source 2" aria-expanded="false" aria-controls="sources">2</button>.
+        Over <span class="claim" data-src="3">nine years</span><button class="cite" data-src="3" aria-label="Source 3" aria-expanded="false" aria-controls="sources">3</button>
+        I&rsquo;ve gone from Angular frontends to owning the whole system: <span class="claim" data-src="4">Python services, React apps and the Kubernetes setup they ship on</span><button class="cite" data-src="4" aria-label="Source 4" aria-expanded="false" aria-controls="sources">4</button>.
+        What I care about most is <span class="claim" data-src="5">making every AI answer traceable to its source</span><button class="cite" data-src="5" aria-label="Source 5" aria-expanded="false" aria-controls="sources">5</button>,
+        which is why this page cites itself.
+      </p>
+      <p class="hint"><span class="cite" aria-hidden="true">1</span> Select a number to see the evidence behind each claim.</p>
+    </section>
+
+    <section id="experience" aria-labelledby="exp-title">
+      <h2 id="exp-title">Experience</h2>
+      <ol class="roles" reversed>
+
+        <li class="role-item current">
+          <div class="when"><strong>Apr 2024 – now</strong>Bangalore</div>
+          <div class="role-main">
+            <h3>Lead Software Engineer, OptimaAI</h3>
+            <p class="org">Accumn, a Yubi company</p>
+            <ul>
+              <li id="ev-1">Lead a team of 6 engineers that owns OptimaAI end to end, an AI credit-underwriting platform live with 10 lenders across India and MENA. Own architecture, delivery and weekly releases with product, credit and operations teams.</li>
+              <li id="ev-2">Architected a Python/FastAPI monorepo of 5 MCP servers (calculator, company, retail, legacy, MENA) exposing 30+ financial tools to Claude agents, so new tools or regions plug in without changing agent code.</li>
+              <li id="ev-3">Chose Temporal for long-running taskbook execution, RFP orchestration and operations automation. Durable state and automatic retries let multi-step jobs survive failures, scaling to 100+ concurrent workflows.</li>
+              <li id="ev-4">Designed an end-to-end citation pipeline: MCP tools return cited data, LLM output is limited to citation markers, and the UI links each marker to a source panel. Credit teams get the audit trail lending decisions require.</li>
+              <li id="ev-5">Lead AI-driven Credit Assessment Memo generation. A dedicated editing agent with per-turn versioning, audit history and rollback produces a review-ready CAM in under an hour.</li>
+              <li id="ev-6">Built across the stack: async PostgreSQL, SQLAlchemy 2.0, Redis and Qdrant; OAuth/JWT with hierarchical RBAC across lender, division and branch scopes for 6 personas; React 18 + TypeScript modules for search, AI chat, analytics and PDF export.</li>
+              <li id="ev-7">Own release and infrastructure practice (Docker, Kubernetes/Helm, ArgoCD GitOps, Jenkins, separate India and UAE environments), shipping weekly at 99.9%+ uptime. Set testing and code-review standards, mentor the team and interview candidates.</li>
+            </ul>
+            <p class="stack">Claude SDK, MCP, mcp-agent, Temporal, Python 3.13, FastAPI, PostgreSQL, Qdrant, React 18, Kubernetes, ArgoCD</p>
+          </div>
+        </li>
+
+        <li class="role-item">
+          <div class="when"><strong>Dec 2021 – Mar 2024</strong>Bangalore</div>
+          <div class="role-main">
+            <h3>Senior Frontend Developer</h3>
+            <p class="org">Yubi (CredAvenue)</p>
+            <ul>
+              <li>Led development of a B2B loan marketplace where borrowers and investors collaborate on loan origination, owning delivery planning and releases.</li>
+              <li>Designed and built an enterprise Loan Management System with role-based access for post-disbursement workflows, used by 50+ lenders.</li>
+              <li>Added loan splitting and early-risk dashboards (Recharts, Redux) that help lenders spot at-risk loans earlier.</li>
+              <li>Led the borrower homepage revamp, lifting user interaction by 25% within a month.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="role-item">
+          <div class="when"><strong>Nov 2019 – Dec 2021</strong>Gurgaon</div>
+          <div class="role-main">
+            <h3>Senior Software Engineer</h3>
+            <p class="org">Publicis Sapient</p>
+            <ul>
+              <li>Led frontend development of Verizon&rsquo;s e-commerce platform (Angular 9), reworking LTE/5G order flows and contributing to a 10% conversion lift.</li>
+              <li>Led 4 developers through code reviews, mentoring and sprint execution; shipped daily production releases with a fail-forward practice.</li>
+              <li>Built reusable Angular component libraries in an Nx monorepo and tuned RxJS streams to cut redundant API calls, while keeping WCAG 2.1 compliance.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="role-item">
+          <div class="when"><strong>Sep 2017 – Nov 2019</strong>Noida</div>
+          <div class="role-main">
+            <h3>System Engineer</h3>
+            <p class="org">Tata Consultancy Services</p>
+            <ul>
+              <li id="ev-tcs">Built an itinerary management system for Carnival Cruise Line in Angular and AG Grid, with Excel-like editing for complex travel planning.</li>
+              <li>Built a portfolio management system for Deutsche Bank covering loan tracking, borrower management and real-time portfolio insights.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title">Skills</h2>
+      <dl class="skills">
+        <div>
+          <dt>AI and LLM systems</dt>
+          <dd>Agentic AI, Model Context Protocol, Anthropic Claude SDK, mcp-agent, Google ADK, RAG, citation pipelines, Qdrant vector search, Claude Code</dd>
+        </div>
+        <div>
+          <dt>System design</dt>
+          <dd>Multi-service architecture, durable workflow orchestration, scalability, reliability, auditability, API design, RBAC, OAuth/JWT</dd>
+        </div>
+        <div>
+          <dt>Backend</dt>
+          <dd>Python 3.13, FastAPI, SQLAlchemy 2.0 (async), asyncpg, PostgreSQL, Redis, Temporal, REST, GraphQL, Alembic, Pytest</dd>
+        </div>
+        <div>
+          <dt>Frontend</dt>
+          <dd>React 18, TypeScript, Angular, Redux, NgRx, RxJS, Zustand, Material UI, Recharts, Nx monorepos, WCAG 2.1</dd>
+        </div>
+        <div>
+          <dt>Cloud and DevOps</dt>
+          <dd>AWS, Azure, Docker, Kubernetes, Helm, ArgoCD (GitOps), Jenkins, GitLab CI/CD</dd>
+        </div>
+        <div>
+          <dt>Leadership</dt>
+          <dd>Team leadership, mentoring, technical interviewing, design reviews, planning and estimation, releases, stakeholder management, Agile</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section id="education" aria-labelledby="edu-title">
+      <h2 id="edu-title">Education</h2>
+      <p class="edu">Master of Computer Applications, National Institute of Technology Karnataka (NITK)<span>2014 – 2017</span></p>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Building something that has to be right?</h2>
+      <p>I&rsquo;m happy to talk about AI platforms, FinTech systems or engineering leadership roles.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:rishabhjindal0807@gmail.com">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/rishabh-jindal-34132362/" rel="noopener" target="_blank">LinkedIn</a>
+        <a class="btn" href="resume.pdf" download>Download resume</a>
+      </div>
+    </section>
+  </main>
+
+  <aside class="sources" id="sources" aria-labelledby="sources-title">
+    <div class="sources-head">
+      <h2 id="sources-title">Sources</h2>
+      <p>From my work history</p>
+      <button class="sheet-close" type="button">Close</button>
+    </div>
+    <ol class="source-list" aria-live="polite">
+      <li class="source" data-src="1">
+        <button class="source-btn" type="button" aria-expanded="false"><span class="source-num">1</span><span>Team and platform</span></button>
+        <div class="source-body"><div>
+          <blockquote>Lead a team of 6 engineers that owns OptimaAI end to end, an AI-powered credit-underwriting platform.<span class="from">Lead Software Engineer, Accumn, 2024 to now</span></blockquote>
+          <button class="jump" type="button" data-target="ev-1">Show in experience</button>
+        </div></div>
+      </li>
+      <li class="source" data-src="2">
+        <button class="source-btn" type="button" aria-expanded="false"><span class="source-num">2</span><span>Lenders in production</span></button>
+        <div class="source-body"><div>
+          <blockquote>Live with 10 lenders across India and MENA, with separate India and UAE environments.<span class="from">Lead Software Engineer, Accumn, 2024 to now</span></blockquote>
+          <button class="jump" type="button" data-target="ev-7">Show in experience</button>
+        </div></div>
+      </li>
+      <li class="source" data-src="3">
+        <button class="source-btn" type="button" aria-expanded="false"><span class="source-num">3</span><span>Years of experience</span></button>
+        <div class="source-body"><div>
+          <blockquote>First role: System Engineer at Tata Consultancy Services, from September 2017, followed by Publicis Sapient, Yubi and Accumn.<span class="from">System Engineer, TCS, 2017 to 2019</span></blockquote>
+          <button class="jump" type="button" data-target="ev-tcs">Show in experience</button>
+        </div></div>
+      </li>
+      <li class="source" data-src="4">
+        <button class="source-btn" type="button" aria-expanded="false"><span class="source-num">4</span><span>Full-stack ownership</span></button>
+        <div class="source-body"><div>
+          <blockquote>Async data layer on PostgreSQL, SQLAlchemy 2.0, Redis and Qdrant; React 18 + TypeScript modules; Kubernetes, Helm and ArgoCD, shipping weekly at 99.9%+ uptime.<span class="from">Lead Software Engineer, Accumn, 2024 to now</span></blockquote>
+          <button class="jump" type="button" data-target="ev-6">Show in experience</button>
+        </div></div>
+      </li>
+      <li class="source" data-src="5">
+        <button class="source-btn" type="button" aria-expanded="false"><span class="source-num">5</span><span>Traceable AI answers</span></button>
+        <div class="source-body"><div>
+          <blockquote>MCP tools return cited data, LLM output is limited to citation markers, and the UI links each marker to a source panel.<span class="from">Lead Software Engineer, Accumn, 2024 to now</span></blockquote>
+          <button class="jump" type="button" data-target="ev-4">Show in experience</button>
+        </div></div>
+      </li>
+    </ol>
+  </aside>
+</div>
+
+<footer>
+  <p>&copy; 2026 Rishabh Jindal. Built from my resume and hosted on GitHub Pages.</p>
+</footer>
+
+<script>
+(function () {
+  const sources = document.getElementById('sources');
+  const cites = document.querySelectorAll('button.cite');
+  const items = document.querySelectorAll('.source');
+  const claims = document.querySelectorAll('.claim');
+  const mobile = window.matchMedia('(max-width: 1000px)');
+  let active = null;
+
+  function setActive(id, fromCite) {
+    if (active === id && !fromCite) id = null;           // clicking an open source in the rail closes it
+    active = id;
+    items.forEach(li => {
+      const on = li.dataset.src === id;
+      li.classList.toggle('is-active', on);
+      li.querySelector('.source-btn').setAttribute('aria-expanded', on);
+    });
+    cites.forEach(c => c.setAttribute('aria-expanded', c.dataset.src === id));
+    claims.forEach(c => c.classList.toggle('is-active', c.dataset.src === id));
+    sources.classList.toggle('is-open', !!id && mobile.matches);
+  }
+
+  cites.forEach(c => c.addEventListener('click', () => {
+    const id = c.dataset.src;
+    setActive(active === id ? null : id, true);
+  }));
+  items.forEach(li => li.querySelector('.source-btn').addEventListener('click', () => {
+    if (!mobile.matches) setActive(li.dataset.src, false);
+  }));
+  sources.querySelector('.sheet-close').addEventListener('click', () => setActive(null, true));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && active) setActive(null, true); });
+
+  sources.querySelectorAll('.jump').forEach(b => b.addEventListener('click', () => {
+    const el = document.getElementById(b.dataset.target);
+    if (!el) return;
+    if (mobile.matches) setActive(null, true);
+    el.scrollIntoView({ block: 'center' });
+    el.classList.remove('flagged'); void el.offsetWidth; el.classList.add('flagged');
+    el.setAttribute('tabindex', '-1'); el.focus({ preventScroll: true });
+  }));
+
+  mobile.addEventListener('change', () => setActive(active, true));
+
+  const head = document.getElementById('masthead');
+  const onScroll = () => head.classList.toggle('is-scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+})();
+</script>
+</body>
+</html>
